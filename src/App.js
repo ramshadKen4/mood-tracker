@@ -5,8 +5,13 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <Calender></Calender>
+        Mood tracker
       </header>
+      <main className='App-body'>
+        <div className='Calender'>
+        <Calender ></Calender>
+        </div>
+      </main>
     </div>
   );
 }

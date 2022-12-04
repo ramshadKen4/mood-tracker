@@ -9,8 +9,8 @@ function Calender() {
         '2016-06-27': 4,
         '2016-06-29': 5,
         '2016-06-30': 4,
+        '2016-07-30': 4,
     }
-
     var panelColors = [
         '#EEEEEE',
         'red',
@@ -18,7 +18,6 @@ function Calender() {
         'blue',
         'yellow',
         'cyan'
-
     ];
     var until = '2016-07-30';
     return (
