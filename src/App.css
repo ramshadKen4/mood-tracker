@@ -42,17 +42,19 @@
   min-width: 50vw;
 
 }
+.ColorSqure{
+  flex: 100%;
+  display: inline;
+}
+.Square {
+  display: grid;
+  height: 10px;
+  width: 10px;
+  margin-top: 10px;
+  background-color: #555;
+  align-items: flex-start;
+}
 
 .App-link {
   color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-
-  to {
-    transform: rotate(360deg);
-  }
 }
