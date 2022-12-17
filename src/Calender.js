@@ -30,11 +30,11 @@ function Calender() {
             <div>
                 <Calendar values={values} until={until} maxWidth="200" panelColors={panelColors} />
             </div>
-            <div class="ColorSqure">
-            <div class="Square"></div>
-            <div class="Square"></div>
-            <div class="Square"></div>
-            <div class="Square"></div>
+            <div className="ColorSqure">
+            <div className="Square"></div>
+            <div className="Square"></div>
+            <div className="Square"></div>
+            <div className="Square"></div>
             <button onClick={()=>{
                 navigate('/signup')
             }}>
