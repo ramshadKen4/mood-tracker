@@ -35,11 +35,6 @@ function Calender() {
             <div className="Square"></div>
             <div className="Square"></div>
             <div className="Square"></div>
-            <button onClick={()=>{
-                navigate('/signup')
-            }}>
-                signu up
-            </button>
             </div>
         </Fragment>
     )
