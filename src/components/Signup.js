@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import './Signup.css';
+import Firebase from '../config/farebase'
 
 function SignupPage() {
   const [username, setUsername] = useState('');
@@ -10,6 +11,24 @@ function SignupPage() {
 
   function handleSignup(event) {
     event.preventDefault();
+    Firebase.auth().createUserWithEmailAndPassword(email, password)
+      .then((userCredential) => {
+        var user = userCredential.user;
+        user.updateProfile({ displayName: username }).then((user) => {
+          Firebase.firestore().collection('user').add({
+            uId: userCredential.user.uid,
+            name: username
+          }).catch((error) => {
+            console.log(error.message)
+          })
+        })
+      })
+      .catch((error) => {
+        var errorCode = error.code;
+        var errorMessage = error.message;
+        console.log(errorMessage)
+        // ..
+      });
 
     // Validate input
     if (password !== confirmPassword) {
@@ -18,7 +37,7 @@ function SignupPage() {
     } else {
       setError('')
     }
-    
+
 
 
     // Create new user account
@@ -33,7 +52,7 @@ function SignupPage() {
       <form action="/examples/actions/confirmation.php" onSubmit={handleSignup} method="post">
         <h2>Sign Up</h2>
         <p>Please fill in this form to create an account!</p>
-          {error ? <div class="alert alert-danger" role="alert">{error}</div>:''}
+        {error ? <div class="alert alert-danger" role="alert">{error}</div> : ''}
         <hr />
         <div className="form-group">
           <div className="input-group">
