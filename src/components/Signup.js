@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import './Signup.css';
-import Firebase from '../config/farebase'
+import Firebase from '../config/firebase'
 
 function SignupPage() {
   const [username, setUsername] = useState('');

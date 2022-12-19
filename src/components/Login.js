@@ -1,15 +1,23 @@
 import React, { useState } from 'react'
 import './Login.css'
-
+import {useHistory, useNavigate} from 'react-router-dom'
+import firebase from '../config/firebase'
 function Login() {
+    const navigate = useNavigate()
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [error, setError] = useState('');
-    const handleLogin = (event)=>{
+    const handleLogin = (event) => {
         event.preventDefault();
-        if(!email){
+        if (!email) {
             setError('enter email id')
         }
+        firebase.auth().signInWithEmailAndPassword(email, password).then((user) => {
+            navigate('/')
+        }).catch((error) => {
+            console.log(error.message)
+        })
+
     }
     return (
 
@@ -18,7 +26,7 @@ function Login() {
                 <h2>Login</h2>
                 <p>Enter email and password for login</p>
                 <hr />
-              
+
                 <div className="form-group">
                     <div className="input-group">
                         <div className="input-group-prepend">
@@ -41,10 +49,10 @@ function Login() {
                 </div>
                 <div className="form-group">
                     <label className="form-check-label">
-            <a href="/forget password">forget password ?</a> </label>
+                        <a href="/forget password">forget password ?</a> </label>
                 </div>
                 <div className="form-group">
-                    <button type="submit" className="btn btn-primary btn-lg">LogIn</button>
+                    <button type="submit" onClick={handleLogin} className="btn btn-primary btn-lg">LogIn</button>
                 </div>
             </form>
             <div className="text-center">Already have an account? <a href="/signup">create an account</a></div>

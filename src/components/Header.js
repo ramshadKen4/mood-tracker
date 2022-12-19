@@ -1,7 +1,15 @@
 import React from 'react'
-import { useState } from 'react'
-function Header() {
-    const [user,setUser] = useState()
+import firebase from '../config/firebase';
+function Header({ user }) {
+    const logoutUser = () => {
+        firebase.auth().signOut().then(function () {
+            // Sign-out successful.
+            console.log("signout successful");
+        }).catch(function (error) {
+            // An error happened.
+            console.log("signout error");
+        });
+    }
     return (
         <nav className="navbar navbar-expand-xl navbar-light bg-light">
             <a href="#" className="navbar-brand"><i className="fa fa-cube"></i>Mood<b>Tracker</b></a>
@@ -16,17 +24,17 @@ function Header() {
                 <div className="navbar-nav ml-auto">
                     {
                         !user ? <a href='/login' className="btn btn-primary">sign in</a> :
-                        <div className="nav-item dropdown ">
-                            <a href="#" data-toggle="dropdown" className="nav-link dropdown-toggle user-action align-center">
-                                Paula Wilson <b className="caret"></b></a>
-                            <div className="dropdown-menu">
-                                <a href="#" className="dropdown-item"><i className="fa fa-user-o"></i> Profile</a>
-                                <a href="#" className="dropdown-item"><i className="fa fa-calendar-o"></i> Calendar</a>
-                                <a href="#" className="dropdown-item"><i className="fa fa-sliders"></i> Settings</a>
-                                <div className="dropdown-divider"></div>
-                                <a href="#" className="dropdown-item"><i className="material-icons">&#xE8AC;</i> Logout</a>
+                            <div className="nav-item dropdown ">
+                                <a href="#" data-toggle="dropdown" className="nav-link dropdown-toggle user-action align-center">
+                                    <span className='m-5'>{user}<b className="caret"></b></span></a>
+                                <div className="dropdown-menu">
+                                    <a href="#" className="dropdown-item"><i className="fa fa-user-o"></i> Profile</a>
+                                    <a href="#" className="dropdown-item"><i className="fa fa-calendar-o"></i> Calendar</a>
+                                    <a href="#" className="dropdown-item"><i className="fa fa-sliders"></i> Settings</a>
+                                    <div className="dropdown-divider"></div>
+                                    <a href="#" onClick={logoutUser} className="dropdown-item"><i className="material-icons">&#xE8AC;</i> Logout</a>
+                                </div >
                             </div >
-                        </div >
                     }
                 </div >
             </div >
