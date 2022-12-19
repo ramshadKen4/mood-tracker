@@ -16,6 +16,7 @@ function Login() {
             navigate('/')
         }).catch((error) => {
             console.log(error.message)
+            setError(error.message)
         })
 
     }
@@ -25,8 +26,8 @@ function Login() {
             <form action="/examples/actions/confirmation.php" method="post">
                 <h2>Login</h2>
                 <p>Enter email and password for login</p>
+                {error ? <div class="alert alert-danger" role="alert">{error}</div> : ''}
                 <hr />
-
                 <div className="form-group">
                     <div className="input-group">
                         <div className="input-group-prepend">
@@ -44,7 +45,7 @@ function Login() {
                                 <i className="fa fa-lock"></i>
                             </span>
                         </div>
-                        <input type="text" onChange={(e) => setPassword(e.target.value)} className="form-control" name="password" placeholder="Password" required="required" />
+                        <input type="password" onChange={(e) => setPassword(e.target.value)} className="form-control" name="password" placeholder="Password" required="required" />
                     </div>
                 </div>
                 <div className="form-group">
