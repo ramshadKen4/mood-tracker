@@ -82,7 +82,7 @@ function SignupPage() {
                 <i className="fa fa-lock"></i>
               </span>
             </div>
-            <input type="text" onChange={(e) => setPassword(e.target.value)} className="form-control" name="password" placeholder="Password" required="required" />
+            <input type="password" onChange={(e) => setPassword(e.target.value)} className="form-control" name="password" placeholder="Password" required="required" />
           </div>
         </div>
         <div className="form-group">
@@ -93,7 +93,7 @@ function SignupPage() {
                 <i className="fa fa-check"></i>
               </span>
             </div>
-            <input type="text" onChange={(e) => setConfirmPassword(e.target.value)} className="form-control" name="confirm_password" placeholder="Confirm Password" required="required" />
+            <input type="password" onChange={(e) => setConfirmPassword(e.target.value)} className="form-control" name="confirm_password" placeholder="Confirm Password" required="required" />
           </div>
         </div>
         <div className="form-group">
