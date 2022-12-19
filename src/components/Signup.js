@@ -27,6 +27,7 @@ function SignupPage() {
         var errorCode = error.code;
         var errorMessage = error.message;
         console.log(errorMessage)
+        setError(errorMessage);
         // ..
       });
 
