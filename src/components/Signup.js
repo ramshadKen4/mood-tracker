@@ -1,14 +1,22 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import './Signup.css';
 import Firebase from '../config/firebase'
 import ErrorCheck from './ErrorCheck';
+import { useNavigate } from 'react-router-dom';
 
-function SignupPage() {
+function SignupPage({isLogged}) {
+
+  const navigate = useNavigate()
   const [username, setUsername] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
   const [error, setError] = useState('');
+  useEffect(() => {
+    if(isLogged){
+      navigate('/')
+    }
+  },[isLogged])
 
   function handleSignup(event) {
     event.preventDefault();
@@ -30,7 +38,7 @@ function SignupPage() {
 
     // Validate input
     if (password !== confirmPassword) {
-      setError({code:"custom/password-not-match"});
+      setError({ code: "custom/password-not-match" });
       return;
     } else {
       setError('')

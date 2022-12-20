@@ -1,13 +1,18 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import './Login.css'
 import { useNavigate } from 'react-router-dom'
 import firebase from '../config/firebase'
 import ErrorCheck from './ErrorCheck'
-function Login() {
+function Login({isLogged}) {
     const navigate = useNavigate()
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [error, setError] = useState('');
+    useEffect(() => {
+        if(isLogged){
+          navigate('/');
+        }
+      },[isLogged])
     const handleLogin = (event) => {
         event.preventDefault();
         firebase.auth().signInWithEmailAndPassword(email, password).then((user) => {

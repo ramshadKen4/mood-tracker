@@ -12,7 +12,6 @@ function App() {
   useEffect(() => {
     Firebase.auth().onAuthStateChanged((user) => {
       setUser(user)
-      console.log(user)
     })
   }, [])
   return (
@@ -27,9 +26,9 @@ function App() {
           <Routes>
             <Route exact path='/' element={<Calender></Calender>}>
             </Route>
-            <Route path='/signup' element={<SignupPage />}>
+            <Route path='/signup' element={user ? <SignupPage isLogged/>:<SignupPage/>}>
             </Route>
-            <Route path='/login' element={<Login />}>
+            <Route path='/login' element={user ? <Login isLogged />:<Login/>}>
             </Route>
           </Routes>
         </BrowserRouter>
