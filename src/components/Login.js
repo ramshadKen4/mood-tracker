@@ -1,7 +1,8 @@
 import React, { useState } from 'react'
 import './Login.css'
-import {useNavigate} from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 import firebase from '../config/firebase'
+import ErrorCheck from './ErrorCheck'
 function Login() {
     const navigate = useNavigate()
     const [email, setEmail] = useState('');
@@ -9,14 +10,10 @@ function Login() {
     const [error, setError] = useState('');
     const handleLogin = (event) => {
         event.preventDefault();
-        if (!email) {
-            setError('enter email id')
-        }
         firebase.auth().signInWithEmailAndPassword(email, password).then((user) => {
             navigate('/')
         }).catch((error) => {
-            console.log(error.message)
-            setError(error.message)
+            setError(error)
         })
 
     }
@@ -25,10 +22,10 @@ function Login() {
         <div className="signup-form">
             <form action="/examples/actions/confirmation.php" method="post">
                 <h2>Login</h2>
-                {error ? 
-                <div class="alert alert-danger error" role="alert">{error}</div>:
-                <p>Enter email and password for login</p>
-                 }
+                {error ?
+                    <ErrorCheck error={error}></ErrorCheck> :
+                    <p>Enter email and password for login</p>
+                }
                 <hr />
                 <div className="form-group">
                     <div className="input-group">

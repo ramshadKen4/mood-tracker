@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import './Signup.css';
 import Firebase from '../config/firebase'
+import ErrorCheck from './ErrorCheck';
 
 function SignupPage() {
   const [username, setUsername] = useState('');
@@ -24,16 +25,12 @@ function SignupPage() {
         })
       })
       .catch((error) => {
-        var errorCode = error.code;
-        var errorMessage = error.message;
-        console.log(errorMessage)
-        setError(errorMessage);
-        // ..
+        setError(error);
       });
 
     // Validate input
     if (password !== confirmPassword) {
-      setError('Passwords do not match.');
+      setError({code:"custom/password-not-match"});
       return;
     } else {
       setError('')
@@ -53,7 +50,7 @@ function SignupPage() {
       <form action="/examples/actions/confirmation.php" onSubmit={handleSignup} method="post">
         <h2>Sign Up</h2>
         {error ?
-          <div class="alert alert-danger error" role="alert">{error}</div> :
+          <ErrorCheck error={error}></ErrorCheck> :
           <p>Please fill in this form to create an account!</p>
         }
         <hr />

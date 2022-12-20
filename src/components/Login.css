@@ -95,9 +95,6 @@ body {
 .wrapper a:hover {
     color: #039BE5;
 }
-.error {
-    font-size:10px;
-}
 
 @media(max-width: 380px) {
     .wrapper {
