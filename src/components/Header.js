@@ -1,7 +1,8 @@
 import React from 'react'
 import firebase from '../config/firebase';
 function Header({ user }) {
-    const logoutUser = () => {
+    const logoutUser = (event) => {
+        event.preventDefault();
         firebase.auth().signOut().then(function () {
             // Sign-out successful.
             console.log("signout successful");

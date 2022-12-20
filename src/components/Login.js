@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import './Login.css'
-import {useHistory, useNavigate} from 'react-router-dom'
+import {useNavigate} from 'react-router-dom'
 import firebase from '../config/firebase'
 function Login() {
     const navigate = useNavigate()
@@ -25,8 +25,10 @@ function Login() {
         <div className="signup-form">
             <form action="/examples/actions/confirmation.php" method="post">
                 <h2>Login</h2>
+                {error ? 
+                <div class="alert alert-danger error" role="alert">{error}</div>:
                 <p>Enter email and password for login</p>
-                {error ? <div class="alert alert-danger" role="alert">{error}</div> : ''}
+                 }
                 <hr />
                 <div className="form-group">
                     <div className="input-group">

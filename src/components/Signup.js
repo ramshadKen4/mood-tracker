@@ -52,8 +52,10 @@ function SignupPage() {
     <div className="signup-form">
       <form action="/examples/actions/confirmation.php" onSubmit={handleSignup} method="post">
         <h2>Sign Up</h2>
-        <p>Please fill in this form to create an account!</p>
-        {error ? <div class="alert alert-danger" role="alert">{error}</div> : ''}
+        {error ?
+          <div class="alert alert-danger error" role="alert">{error}</div> :
+          <p>Please fill in this form to create an account!</p>
+        }
         <hr />
         <div className="form-group">
           <div className="input-group">
