@@ -30,22 +30,21 @@ function Calender() {
         '2022-07-25': 3,
         '2022-07-27': 4,
         '2022-07-29': 5,
-        '2022-06-13': 4,
+        '2022-06-13': 6,
     }
     var panelColors = [
-        '#EEEEEE',
-        'red',
-        'green',
-        'blue',
-        'yellow',
-        'cyan'
+        '#ecf0f3',
+        '#dc3545',
+        '#ffc107',
+        '#198754',
+        '#0d6efd',
+        '#212529',
+        '#0dcaf0'
     ];
     var weekNames = ['s', 'm', 't', 'w', 't', 'f', 's'];
     let date = formatDate(new Date);
     var until = date
     values[date] = 4;
-    console.log(values)
-    console.log(until);
     return (
         <Fragment>
             <div>Calender</div>

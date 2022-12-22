@@ -7,6 +7,7 @@ import Login from './Login';
 import Header from './Header';
 import { useEffect, useState } from 'react';
 import Firebase from '../config/firebase';
+import ButtonGroup from '../components/ButtonGroup';
 function App() {
   const [user, setUser] = useState();
   useEffect(() => {
@@ -14,16 +15,7 @@ function App() {
       setUser(user)
     })
   }, [])
-  const updateAge = () => {
-    Firebase.firestore().collection('user').doc(user.uid).set({
-      uId: user.uid,
-      name: user.displayName,
-      demo: 'demodata'
-    }).catch((error) => {
-      console.log(error.message)
-    })
-  }
-  const Home = <div><Calender></Calender></div>
+  const Home = <div><Calender></Calender><ButtonGroup></ButtonGroup></div>
   return (
     <div className="App">
       <div className='Header'>
