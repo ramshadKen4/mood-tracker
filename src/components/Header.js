@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import firebase from '../config/firebase';
 function Header({ user }) {
     const logoutUser = (event) => {
@@ -13,7 +13,7 @@ function Header({ user }) {
     }
     return (
         <nav className="navbar navbar-expand-xl navbar-light bg-light">
-            <a href="#" className="navbar-brand"><i className="fa fa-cube"></i>Mood<b>Tracker</b></a>
+            <a href="/" className="navbar-brand"><i className="fa fa-cube"></i>Mood<b>Tracker</b></a>
             <button type="button" className="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
                 <span className="navbar-toggler-icon"></span>
             </button>

@@ -14,26 +14,35 @@ function App() {
       setUser(user)
     })
   }, [])
+  const updateAge = () => {
+    Firebase.firestore().collection('user').doc(user.uid).set({
+      uId: user.uid,
+      name: user.displayName,
+      demo: 'demodata'
+    }).catch((error) => {
+      console.log(error.message)
+    })
+  }
+  const Home = <div><Calender></Calender></div>
   return (
     <div className="App">
       <div className='Header'>
         {
-          user ? <Header user = {user.displayName}/> : <Header/> 
+          user ? <Header user={user.displayName} /> : <Header />
         }
       </div>
       <main className='App-body'>
         <BrowserRouter>
           <Routes>
-            <Route exact path='/' element={<Calender></Calender>}>
+            <Route exact path='/' element={Home}>
             </Route>
-            <Route path='/signup' element={user ? <SignupPage isLogged/>:<SignupPage/>}>
+            <Route path='/signup' element={user ? <SignupPage isLogged /> : <SignupPage />}>
             </Route>
-            <Route path='/login' element={user ? <Login isLogged />:<Login/>}>
+            <Route path='/login' element={user ? <Login isLogged /> : <Login />}>
             </Route>
           </Routes>
         </BrowserRouter>
-        <div className='Calender'>
-        </div>
+
       </main>
     </div>
   );

@@ -1,16 +1,36 @@
 import Calendar from 'react-github-contribution-calendar';
 import React, { Fragment } from 'react'
-import {useNavigate} from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 
 function Calender() {
+    function formatDate(date) {
+        var d = new Date(date),
+            month = '' + (d.getMonth() + 1),
+            day = '' + d.getDate(),
+            year = d.getFullYear();
+    
+        if (month.length < 2) 
+            month = '0' + month;
+        if (day.length < 2) 
+            day = '0' + day;
+    
+        return [year, month, day].join('-');
+    }
+     
     const navigate = useNavigate();
     var values = {
-        '2016-06-21': 1,
-        '2016-06-22': 2,
-        '2016-06-25': 3,
-        '2016-06-27': 4,
-        '2016-06-29': 5,
-        '2016-06-13': 4,
+        '2022-06-21': 1,
+        '2022-06-22': 2,
+        '2022-06-25': 3,
+        '2022-06-27': 4,
+        '2022-06-29': 5,
+        '2022-06-13': 4,
+        '2022-07-21': 1,
+        '2022-07-22': 2,
+        '2022-07-25': 3,
+        '2022-07-27': 4,
+        '2022-07-29': 5,
+        '2022-06-13': 4,
     }
     var panelColors = [
         '#EEEEEE',
@@ -20,14 +40,17 @@ function Calender() {
         'yellow',
         'cyan'
     ];
-    let date = '2016-08-12'
-    var until = date;
-    console.log(date)
+    var weekNames = ['s', 'm', 't', 'w', 't', 'f', 's'];
+    let date = formatDate(new Date);
+    var until = date
+    values[date] = 4;
+    console.log(values)
+    console.log(until);
     return (
         <Fragment>
             <div>Calender</div>
-            <div>
-                <Calendar values={values} until={until} maxWidth="200" panelColors={panelColors} />
+            <div className='Calender'>
+                <Calendar values={values} until={until} weekNames={weekNames} maxWidth="200" panelColors={panelColors}/>
             </div>
         </Fragment>
     )

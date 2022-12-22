@@ -24,7 +24,7 @@ function SignupPage({isLogged}) {
       .then((userCredential) => {
         var user = userCredential.user;
         user.updateProfile({ displayName: username }).then((user) => {
-          Firebase.firestore().collection('user').add({
+          Firebase.firestore().collection('user').doc(userCredential.user.uid).set({
             uId: userCredential.user.uid,
             name: username
           }).catch((error) => {
