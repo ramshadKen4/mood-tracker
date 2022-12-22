@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import '../style/Header.css'
 import firebase from '../config/firebase';
 function Header({ user }) {
     const logoutUser = (event) => {

@@ -1,5 +1,5 @@
 import '../../node_modules/bootstrap/dist/css/bootstrap.css'
-import './App.css';
+import '../style/App.css';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import Calender from './Calender';
 import SignupPage from './Signup';

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import './Login.css'
+import '../style/Login.css'
 import { useNavigate } from 'react-router-dom'
 import firebase from '../config/firebase'
 import ErrorCheck from './ErrorCheck'

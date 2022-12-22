@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import './Signup.css';
+import '../style/Signup.css';
 import Firebase from '../config/firebase'
 import ErrorCheck from './ErrorCheck';
 import { useNavigate } from 'react-router-dom';
