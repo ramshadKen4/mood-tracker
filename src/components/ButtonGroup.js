@@ -1,6 +1,7 @@
 import React from 'react'
-const today = new Date().toDateString();
-function ButtonGroup() {
+import firebase from '../config/firebase';
+function ButtonGroup({ user }) {
+    const today = new Date().toDateString();
     function formatDate(date) {
         var d = new Date(date),
             month = '' + (d.getMonth() + 1),
@@ -14,10 +15,19 @@ function ButtonGroup() {
 
         return [year, month, day].join('-');
     }
+    var userData = {}
     const changeButton = (e) => {
-        let value = {}
-        value[formatDate(today)] = e.target.value
-        console.log(value)
+        let value = Object.create(null);
+        let userRef = firebase.firestore().collection('user').doc(user.uid);
+        userRef.get().then(user => {
+            let data = user.data().date
+            userData = { date: data }
+            value[formatDate(today).toString()] = e.target.value
+            userData.date = {...userData.date,...value}
+            // console.table(userData);
+            userRef.update(userData)
+        });
+
     }
     return (
         <>

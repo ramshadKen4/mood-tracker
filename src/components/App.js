@@ -15,7 +15,7 @@ function App() {
       setUser(user)
     })
   }, [])
-  const Home = <div><Calender></Calender><ButtonGroup></ButtonGroup></div>
+  const Home = <div><Calender></Calender><ButtonGroup user={user}></ButtonGroup></div>
   return (
     <div className="App">
       <div className='Header'>
